@@ -1,0 +1,9 @@
+setuptools
+wheel
+pybind11
+numpy
+flask
+flask-jsonpify
+flask-restful
+nmslib
+pathlib
