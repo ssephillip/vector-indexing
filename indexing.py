@@ -45,6 +45,8 @@ class Indexer:
         data_matrix = numpy.loadtxt(self.data_file_name)
         ids = numpy.loadtxt(self.id_file_name, dtype=numpy.int)
         self.id_to_vector_map = dict(zip(ids, data_matrix))
+        print("num of vectors arrived:")
+        print(len(self.id_to_vector_map))
 
 
 
@@ -85,11 +87,13 @@ def index_vectors():
 
 @app.route('/vector/<int:id>')
 def get_vector(id):
-    return indexerObject.get_vector(id)
+    response = indexerObject.get_vector(id)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 
-# if __name__ == '__main__':
-#     app.run(port='5002', debug=True)
+if __name__ == '__main__':
+    app.run(port='5003', debug=True)
 
 
 
