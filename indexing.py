@@ -53,7 +53,7 @@ class Indexer:
 
 
 
-        self.index = nmslib.init(method='hnsw', space='cosinesimil_sparse_fast')
+        self.index = nmslib.init(method='hnsw', space='cosinesimil')
         self.index.addDataPointBatch(data_matrix, ids)
         self.index.createIndex({'post': 2}, print_progress=True)
         self.index.saveIndex('index_optim.bin', save_data=True)
