@@ -36,9 +36,12 @@ class Indexer:
 
     #@app.route('/index_vectors', methods=['POST'])
     def index_vectors(self):
+
         vector_file = request.files['vectors']
-        vector_file.save(self.data_file_name)
         id_file = request.files['ids']
+
+
+        vector_file.save(self.data_file_name)
         id_file.save(self.id_file_name)
 
 
@@ -50,7 +53,7 @@ class Indexer:
 
 
 
-        self.index = nmslib.init(method='hnsw', space='l2')
+        self.index = nmslib.init(method='hnsw', space='cosinesimil_sparse_fast')
         self.index.addDataPointBatch(data_matrix, ids)
         self.index.createIndex({'post': 2}, print_progress=True)
         self.index.saveIndex('index_optim.bin', save_data=True)
