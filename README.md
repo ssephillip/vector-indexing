@@ -9,14 +9,15 @@ This functionality can be accessed via Http Requests. \
 <br/>
 <h2>The following endpoints are provided by this service <h2/>
 
-<h3>Indexing vectors<h3/> \
-Endpoint: \
+### Indexing vectors
+#### Endpoint: 
 [baseurl]/index_vectors \
 <br/>
-Example: \
+#### Example: 
 http://localhost:5000/index_vectors \
 <br/>
-Type: POST-Request \
+#### Type: 
+POST-Request \
 <br/>
 Provides the possibility to store vectors in the vector index. The existing vectors in the index will be removed. \
 As parameters two files have to be provided. \
@@ -32,23 +33,21 @@ The ID in line 5 in the files with the IDs must be the ID of the vector in line 
 <br/>
 <br/>
 <br/>
-Retrieve the k-Nearest Neighbours: \
-Endpoint: \
+### Retrieve the k-Nearest Neighbours
+#### Endpoint: 
 [baseurl]/vectors/<ID>?num=[num of k-NN] \
 <br/>
-Example: \
+#### Example: 
 http://localhost:5000/vector/7?num=10 \
 <br/>
-Type: GET-Request \
+#### Type: 
+GET-Request \
 <br/>
 Retrieves the k-Nearest-Neighbours of the vector for which an ID was provided. \
 Note: The vector belonging to the specified ID is also returned as result (as the most similar vector). \
 The result is returned in JSON format. It is returned as a list, where each list element is a pair of the following form: \
 [vector-id,cosine_distance] \
 <br/>
-Example list item: \
-[5,0.32432] \
-<br/>
-Example response: \
+#### Example response: 
 {"result":[[3,0.0],[15,0.013967633247375488],[16,0.017206192016601562],[13,0.018164396286010742]]}
 
